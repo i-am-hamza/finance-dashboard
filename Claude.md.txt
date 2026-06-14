@@ -1,0 +1,36 @@
+# Finance Dashboard — Project Context
+
+## What this is
+A full-stack personal finance web app. Multi-user, each user has isolated data.
+Tracks: Cash & Savings, Income, EMI/Debts, Budget, Subscriptions, Investments.
+
+## Stack
+- Next.js 14 (App Router) + Tailwind CSS + shadcn/ui
+- Supabase (Auth + PostgreSQL + RLS)
+- Recharts for charts
+- Vercel for deployment
+
+## Critical Rules
+- NEVER skip Supabase RLS policies — every table must have them
+- ALL monetary entries store: amount, currency, rate_at_entry
+- Historical exchange rates must never retroactively update
+- EMI payments auto-create read-only budget expense entries
+- Subscription renewals auto-create read-only budget expense entries
+- Bottom nav on mobile (5 tabs), left sidebar on desktop
+
+## Commands
+- Dev: `npm run dev`
+- Build: `npm run build`
+- Lint: `npm run lint`
+
+## Architecture
+- Business logic in `src/lib/services/`
+- DB queries only in Server Actions or API routes
+- UI components in `src/components/`
+- Supabase client in `src/lib/supabase/`
+
+## Coding Standards
+- TypeScript throughout
+- Functional components + hooks
+- All async calls use try/catch
+- kebab-case for files, PascalCase for components
