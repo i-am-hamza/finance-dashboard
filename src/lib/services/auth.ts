@@ -16,10 +16,15 @@ export async function signUp(formData: FormData) {
     options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback` },
   });
 
-  if (error) return { error: error.message };
+  if (error) {
+    console.error("signUp error:", error);
+    return { error: error.message };
+  }
 
   if (data.user) {
-    const { error: settingsError } = await supabase
+    // Use admin client — regular client has no session when email confirmation is pending
+    const admin = createAdminClient();
+    const { error: settingsError } = await admin
       .from("user_settings")
       .insert({
         user_id: data.user.id,
@@ -29,7 +34,13 @@ export async function signUp(formData: FormData) {
     if (settingsError) console.error("Failed to seed user_settings:", settingsError.message);
   }
 
-  return { success: "Check your email to confirm your account." };
+  // No session means Supabase requires email confirmation
+  if (!data.session) {
+    return { success: "Check your email to confirm your account." };
+  }
+
+  // Session is active (email confirmation disabled) — go straight to dashboard
+  redirect("/");
 }
 
 export async function signIn(formData: FormData) {
@@ -39,7 +50,10 @@ export async function signIn(formData: FormData) {
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-  if (error) return { error: error.message };
+  if (error) {
+    console.error("signIn error:", error);
+    return { error: error.message };
+  }
 
   redirect("/");
 }
