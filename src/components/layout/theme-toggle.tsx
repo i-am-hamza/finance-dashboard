@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -12,7 +13,13 @@ interface ThemeToggleProps {
 
 export function ThemeToggle({ variant = "icon" }: ThemeToggleProps) {
   const { isDark, toggle } = useTheme();
-  const label = isDark ? "Switch to light mode" : "Switch to dark mode";
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
+  // Before mount, use a neutral label so SSR and client HTML match.
+  const label = mounted
+    ? (isDark ? "Switch to light mode" : "Switch to dark mode")
+    : "Toggle theme";
 
   if (variant === "row") {
     return (

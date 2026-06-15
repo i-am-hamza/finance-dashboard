@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -22,9 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Inline script: apply dark class before first paint to avoid flash */}
-        <script
+      <body className={`${geist.variable} font-sans antialiased`}>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -39,8 +41,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className={`${geist.variable} font-sans antialiased`}>
         <TooltipProvider>
           {children}
           <Toaster richColors closeButton />
