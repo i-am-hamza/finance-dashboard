@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { TYPE_LABELS, typeLabel } from "@/lib/services/portfolio-constants";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -39,19 +40,6 @@ export interface AllocationSlice {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const STALE_MS = 7 * 24 * 60 * 60 * 1000;
-
-export const TYPE_LABELS: Record<string, string> = {
-  MutualFund: "Mutual Fund",
-  RealEstate: "Real Estate",
-};
-
-export const ASSET_TYPES = [
-  "Stocks", "MutualFund", "FD", "Crypto", "RealEstate", "Gold", "Other",
-] as const;
-
-export function typeLabel(t: string): string {
-  return TYPE_LABELS[t] ?? t;
-}
 
 // ─── Compute helpers ──────────────────────────────────────────────────────────
 

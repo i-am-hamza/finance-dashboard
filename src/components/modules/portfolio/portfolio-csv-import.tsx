@@ -12,7 +12,7 @@ import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
 import { bulkImportHoldings } from "@/lib/actions/portfolio";
-import { ASSET_TYPES, typeLabel } from "@/lib/services/portfolio";
+import { ASSET_TYPES, typeLabel } from "@/lib/services/portfolio-constants";
 import { todayISO } from "@/lib/utils/date";
 
 // ─── Column aliases: maps various INDmoney header names → our fields ──────────

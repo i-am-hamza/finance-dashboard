@@ -16,7 +16,7 @@ import { HoldingForm } from "./holding-form";
 import { UpdatePriceForm } from "./update-price-form";
 import { CsvImporter } from "@/components/csv/csv-importer";
 import { HOLDING_FIELDS } from "@/lib/csv/schemas";
-import { typeLabel } from "@/lib/services/portfolio";
+import { typeLabel } from "@/lib/services/portfolio-constants";
 import type { HoldingRow } from "@/lib/services/portfolio";
 
 const TYPE_COLORS: Record<string, string> = {

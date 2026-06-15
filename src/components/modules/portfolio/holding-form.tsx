@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/select";
 import { addHolding, updateHolding } from "@/lib/actions/portfolio";
 import { todayISO } from "@/lib/utils/date";
-import { ASSET_TYPES, typeLabel } from "@/lib/services/portfolio";
+import { ASSET_TYPES, typeLabel } from "@/lib/services/portfolio-constants";
 import type { HoldingRow } from "@/lib/services/portfolio";
 
 const CURRENCIES = ["INR", "USD", "EUR", "GBP", "AED", "SGD", "CAD", "AUD"] as const;
