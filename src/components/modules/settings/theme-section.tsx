@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Sun, Monitor, Moon } from "lucide-react";
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 const OPTIONS = [
@@ -10,10 +11,12 @@ const OPTIONS = [
   { value: "dark",   label: "Dark",   Icon: Moon    },
 ] as const;
 
-type ThemeValue = "light" | "system" | "dark";
-
 export function ThemeSection() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
+  if (!mounted) return <div className="h-10" />;
 
   return (
     <div className="inline-flex items-center gap-1 rounded-lg border border-border bg-muted/50 p-1">
@@ -23,7 +26,7 @@ export function ThemeSection() {
           <button
             key={value}
             type="button"
-            onClick={() => setTheme(value as ThemeValue)}
+            onClick={() => setTheme(value)}
             aria-pressed={active}
             className={cn(
               "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
