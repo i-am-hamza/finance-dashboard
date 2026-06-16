@@ -7,7 +7,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const SECTION_LABELS: Record<string, string> = {
-  "/":          "Home",
+  "/dashboard": "Home",
   "/accounts":  "Accounts",
   "/debts":     "Debts",
   "/spending":  "Spending",
@@ -18,7 +18,7 @@ const SECTION_LABELS: Record<string, string> = {
 function getSectionLabel(pathname: string): string {
   if (SECTION_LABELS[pathname]) return SECTION_LABELS[pathname];
   const prefix = Object.keys(SECTION_LABELS)
-    .filter((k) => k !== "/" && pathname.startsWith(k))
+    .filter((k) => pathname.startsWith(k))
     .sort((a, b) => b.length - a.length)[0];
   return prefix ? SECTION_LABELS[prefix] : "Finance Dashboard";
 }

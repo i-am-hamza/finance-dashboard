@@ -16,7 +16,7 @@ import { signOut } from "@/lib/services/auth";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const NAV_ITEMS = [
-  { href: "/",          label: "Home",      icon: LayoutDashboard },
+  { href: "/dashboard", label: "Home",      icon: LayoutDashboard },
   { href: "/accounts",  label: "Accounts",  icon: Wallet          },
   { href: "/debts",     label: "Debts",     icon: CreditCard      },
   { href: "/spending",  label: "Spending",  icon: ReceiptText     },
@@ -73,7 +73,7 @@ export function Sidebar() {
         <ul className="space-y-0.5">
           {NAV_ITEMS.map(({ href, label, icon }) => {
             const isActive =
-              href === "/" ? pathname === "/" : pathname.startsWith(href);
+              href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href);
             return (
               <li key={href}>
                 <NavLink

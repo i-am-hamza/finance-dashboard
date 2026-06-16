@@ -12,7 +12,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { href: "/",          label: "Home",      icon: LayoutDashboard },
+  { href: "/dashboard", label: "Home",      icon: LayoutDashboard },
   { href: "/accounts",  label: "Accounts",  icon: Wallet          },
   { href: "/debts",     label: "Debts",     icon: CreditCard      },
   { href: "/spending",  label: "Spending",  icon: ReceiptText     },
@@ -30,7 +30,7 @@ export function BottomNav() {
       <ul className="flex h-16 items-stretch">
         {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
           const isActive =
-            href === "/" ? pathname === "/" : pathname.startsWith(href);
+            href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href);
 
           return (
             <li key={href} className="flex flex-1">

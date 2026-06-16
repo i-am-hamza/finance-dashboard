@@ -31,16 +31,19 @@ export async function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
   const isAuthRoute = pathname.startsWith("/login") || pathname.startsWith("/signup");
+  const isPublicRoute = pathname === "/";
 
-  if (!user && !isAuthRoute) {
+  // Authenticated user on landing page or auth routes → send to dashboard
+  if (user && (isPublicRoute || isAuthRoute)) {
     const url = request.nextUrl.clone();
-    url.pathname = "/login";
+    url.pathname = "/dashboard";
     return NextResponse.redirect(url);
   }
 
-  if (user && isAuthRoute) {
+  // Unauthenticated user on a protected route → send to login
+  if (!user && !isPublicRoute && !isAuthRoute) {
     const url = request.nextUrl.clone();
-    url.pathname = "/";
+    url.pathname = "/login";
     return NextResponse.redirect(url);
   }
 

@@ -54,7 +54,7 @@ export async function signUp(formData: FormData) {
   }
 
   // Session is active (email confirmation disabled) — go straight to dashboard
-  redirect("/");
+  redirect("/dashboard");
 }
 
 export async function signIn(formData: FormData) {
@@ -69,7 +69,7 @@ export async function signIn(formData: FormData) {
     return { error: error.message };
   }
 
-  redirect("/");
+  redirect("/dashboard");
 }
 
 export async function signOut() {
