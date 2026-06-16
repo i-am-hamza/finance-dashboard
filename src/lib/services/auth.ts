@@ -9,6 +9,13 @@ export async function signUp(formData: FormData) {
   const password = formData.get("password") as string;
   const displayName = formData.get("displayName") as string;
 
+  console.log("signUp attempt — env check:", {
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL?.slice(0, 30),
+    anonKeyPresent: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    serviceKeyPresent: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+  });
+
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -17,9 +24,16 @@ export async function signUp(formData: FormData) {
   });
 
   if (error) {
-    console.error("signUp error:", error);
+    console.error("Supabase signup error:", JSON.stringify(error));
     return { error: error.message };
   }
+
+  console.log("Signup data:", JSON.stringify({
+    userId: data.user?.id,
+    userEmail: data.user?.email,
+    sessionPresent: !!data.session,
+    confirmationSentAt: data.user?.confirmation_sent_at,
+  }));
 
   if (data.user) {
     // Use admin client — regular client has no session when email confirmation is pending
@@ -31,7 +45,7 @@ export async function signUp(formData: FormData) {
         base_currency: "INR",
         display_name: displayName || null,
       });
-    if (settingsError) console.error("Failed to seed user_settings:", settingsError.message);
+    if (settingsError) console.error("Failed to seed user_settings:", JSON.stringify(settingsError));
   }
 
   // No session means Supabase requires email confirmation
