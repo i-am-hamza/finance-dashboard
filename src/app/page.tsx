@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { AreaChart, Area, ResponsiveContainer } from "recharts";
 import {
@@ -74,9 +75,18 @@ function Navbar() {
       )}
     >
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 md:px-6">
-        <span className="text-[15px] font-semibold tracking-tight text-foreground">
-          Finora
-        </span>
+        <div className="flex items-center gap-2">
+          <Image
+            src="/Finora icon.png"
+            alt="Finora"
+            width={28}
+            height={28}
+            className="dark:invert"
+          />
+          <span className="text-[15px] font-semibold tracking-tight text-foreground">
+            Finora
+          </span>
+        </div>
         <div className="flex items-center gap-2">
           <Link href="/login" className={buttonVariants({ variant: "ghost", size: "sm" })}>
             Log in

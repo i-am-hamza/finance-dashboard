@@ -12,8 +12,13 @@ const geist = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Finance Dashboard",
-  description: "Personal finance tracker",
+  title: "Finora",
+  description: "Personal finance dashboard — track income, debts, EMIs, investments, subscriptions and budgets in one place.",
+  icons: {
+    icon: "/Finora icon.png",
+    apple: "/Finora icon.png",
+    shortcut: "/Finora icon.png",
+  },
 };
 
 export default function RootLayout({

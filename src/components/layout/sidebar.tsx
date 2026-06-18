@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -61,10 +62,16 @@ export function Sidebar() {
   return (
     <aside className="sticky top-0 hidden h-screen w-[220px] shrink-0 flex-col border-r border-border bg-background md:flex">
       {/* Brand */}
-      <div className="flex h-14 items-center border-b border-border px-5">
+      <div className="flex h-14 items-center gap-2 border-b border-border px-5">
+        <Image
+          src="/Finora icon.png"
+          alt="Finora"
+          width={28}
+          height={28}
+          className="dark:invert"
+        />
         <span className="text-[13px] font-semibold tracking-tight text-foreground">
-          Finance
-          <span className="text-slate-400 dark:text-slate-500"> Dashboard</span>
+          Finora
         </span>
       </div>
 
