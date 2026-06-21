@@ -9,6 +9,7 @@ import {
   CreditCard,
   ReceiptText,
   TrendingUp,
+  Target,
   Settings,
   LogOut,
 } from "lucide-react";
@@ -17,11 +18,12 @@ import { signOut } from "@/lib/services/auth";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Home",      icon: LayoutDashboard },
-  { href: "/accounts",  label: "Accounts",  icon: Wallet          },
-  { href: "/debts",     label: "Debts",     icon: CreditCard      },
-  { href: "/spending",  label: "Spending",  icon: ReceiptText     },
-  { href: "/portfolio", label: "Portfolio", icon: TrendingUp      },
+  { href: "/dashboard",       label: "Home",      icon: LayoutDashboard },
+  { href: "/accounts",        label: "Accounts",  icon: Wallet          },
+  { href: "/debts",           label: "Debts",     icon: CreditCard      },
+  { href: "/spending",        label: "Spending",  icon: ReceiptText     },
+  { href: "/portfolio",       label: "Portfolio", icon: TrendingUp      },
+  { href: "/dashboard/goals", label: "Goals",     icon: Target          },
 ] as const;
 
 function NavLink({

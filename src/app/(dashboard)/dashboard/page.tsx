@@ -4,6 +4,7 @@ import { NetWorthChart } from "@/components/modules/dashboard/net-worth-chart";
 import { IncomeExpenseChart } from "@/components/modules/dashboard/income-expense-chart";
 import { AssetAllocationChart } from "@/components/modules/dashboard/asset-allocation-chart";
 import { UpcomingList } from "@/components/modules/dashboard/upcoming-list";
+import { GoalsSummaryWidget } from "@/components/modules/goals/goals-summary-widget";
 import {
   getNetWorthData,
   getMonthlySummary,
@@ -118,6 +119,9 @@ export default async function DashboardPage() {
           </h2>
           <UpcomingList items={upcoming} />
         </section>
+
+        {/* ── Goals & FIRE ──────────────────────────────────────────────── */}
+        <GoalsSummaryWidget />
 
       </div>
     </div>

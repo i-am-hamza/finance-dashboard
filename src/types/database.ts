@@ -423,6 +423,93 @@ export type Database = {
         };
         Relationships: [];
       };
+      fire_settings: {
+        Row: {
+          id: string;
+          user_id: string;
+          monthly_expenses_override: number | null;
+          current_savings_override: number | null;
+          annual_return_rate: number;
+          annual_inflation_rate: number;
+          current_age: number | null;
+          target_retirement_age: number | null;
+          currency: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          monthly_expenses_override?: number | null;
+          current_savings_override?: number | null;
+          annual_return_rate?: number;
+          annual_inflation_rate?: number;
+          current_age?: number | null;
+          target_retirement_age?: number | null;
+          currency?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          monthly_expenses_override?: number | null;
+          current_savings_override?: number | null;
+          annual_return_rate?: number;
+          annual_inflation_rate?: number;
+          current_age?: number | null;
+          target_retirement_age?: number | null;
+          currency?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      goals: {
+        Row: {
+          id: string;
+          user_id: string;
+          name: string;
+          category: string;
+          target_amount: number;
+          current_amount: number;
+          current_amount_override: number | null;
+          monthly_contribution: number | null;
+          target_date: string | null;
+          currency: string;
+          status: string;
+          notes: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          name: string;
+          category?: string;
+          target_amount: number;
+          current_amount?: number;
+          current_amount_override?: number | null;
+          monthly_contribution?: number | null;
+          target_date?: string | null;
+          currency?: string;
+          status?: string;
+          notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          name?: string;
+          category?: string;
+          target_amount?: number;
+          current_amount?: number;
+          current_amount_override?: number | null;
+          monthly_contribution?: number | null;
+          target_date?: string | null;
+          currency?: string;
+          status?: string;
+          notes?: string | null;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

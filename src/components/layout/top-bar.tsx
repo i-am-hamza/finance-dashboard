@@ -7,12 +7,13 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const SECTION_LABELS: Record<string, string> = {
-  "/dashboard": "Home",
-  "/accounts":  "Accounts",
-  "/debts":     "Debts",
-  "/spending":  "Spending",
-  "/portfolio": "Portfolio",
-  "/settings":  "Settings",
+  "/dashboard/goals": "Goals",
+  "/dashboard":       "Home",
+  "/accounts":        "Accounts",
+  "/debts":           "Debts",
+  "/spending":        "Spending",
+  "/portfolio":       "Portfolio",
+  "/settings":        "Settings",
 };
 
 function getSectionLabel(pathname: string): string {

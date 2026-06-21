@@ -8,15 +8,16 @@ import {
   CreditCard,
   ReceiptText,
   TrendingUp,
+  Target,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Home",      icon: LayoutDashboard },
-  { href: "/accounts",  label: "Accounts",  icon: Wallet          },
-  { href: "/debts",     label: "Debts",     icon: CreditCard      },
-  { href: "/spending",  label: "Spending",  icon: ReceiptText     },
-  { href: "/portfolio", label: "Portfolio", icon: TrendingUp      },
+  { href: "/dashboard",       label: "Home",      icon: LayoutDashboard },
+  { href: "/accounts",        label: "Accounts",  icon: Wallet          },
+  { href: "/spending",        label: "Spending",  icon: ReceiptText     },
+  { href: "/portfolio",       label: "Portfolio", icon: TrendingUp      },
+  { href: "/dashboard/goals", label: "Goals",     icon: Target          },
 ] as const;
 
 export function BottomNav() {
